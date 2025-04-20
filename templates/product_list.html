@@ -1,0 +1,16 @@
+<h1>Все товары</h1>
+
+{% for category in categories %}
+    <h2>{{ category.name }}</h2>
+    <ul>
+    {% for product in category.products.all %}
+        <li>
+            <img src="{{ product.image.url }}" alt="{{ product.name }}" width="100">
+            <strong>{{ product.name }}</strong> — {{ product.price }} KGS
+            <p>{{ product.description }}</p>
+        </li>
+    {% empty %}
+        <li>Нет товаров</li>
+    {% endfor %}
+    </ul>
+{% endfor %}
